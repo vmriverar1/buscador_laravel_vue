@@ -1,0 +1,3 @@
+VUE
+npm install vue@next
+npm install laravel-mix@next

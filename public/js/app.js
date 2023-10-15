@@ -18984,9 +18984,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      text: 'Hola mundo'
+      query: '',
+      posts: ''
     };
-  } // setup() {
+  },
+  computed: {
+    resultsVisibility: function resultsVisibility() {
+      return this.query.length > 0 ? 'show' : 'hide';
+    }
+  },
+  methods: {
+    search: function search() {
+      var _this = this;
+      if (this.query.length >= 3) {
+        axios.post('/posts/search', {
+          q: this.query
+        }).then(function (res) {
+          console.log(res.data.post);
+          _this.posts = res.data.post;
+        })["catch"](function (error) {
+          console.log(error.response);
+        });
+        console.log("Buscando");
+      }
+    }
+  }
+  // setup() {
+
   // },
 });
 
@@ -19014,33 +19038,38 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "search-box"
 };
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  "class": "search-input",
-  type: "text",
-  name: "q",
-  placeholder: "Escribe una palabra"
-}, null, -1 /* HOISTED */);
-var _hoisted_5 = {
-  "class": "result-list show"
-};
-var _hoisted_6 = {
+var _hoisted_4 = {
   "class": "result-item"
 };
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_5 = {
   href: "#",
   "class": "result-link"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_6 = {
   "class": "result-title"
-}, "Nombre del post"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "result-contect"
-}, " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, esse tempore voluptatem hic. ")], -1 /* HOISTED */);
-var _hoisted_8 = [_hoisted_7];
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem? ", -1 /* HOISTED */);
+};
+var _hoisted_7 = {
+  "class": "result-content"
+};
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, totam suscipit unde sequi cupiditate id modi ad repellat, aut dolor beatae distinctio ea sunt porro iste. Corrupti nemo cum quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsam maiores repellendus veniam voluptas eius, sit est rem animi tempora in ipsum itaque distinctio necessitatibus at ullam aperiam sapiente autem? ", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(10, function (x) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_6, _hoisted_8);
-  }), 64 /* STABLE_FRAGMENT */))])]), _hoisted_9])]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "search-input",
+    type: "text",
+    name: "q",
+    placeholder: "Escribe una palabra",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.query = $event;
+    }),
+    onInput: _cache[1] || (_cache[1] = function ($event) {
+      return $options.search();
+    })
+  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.query]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["result-list", $options.resultsVisibility])
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.posts, function (post) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.title), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.content.substr(1, 40)), 1 /* TEXT */)])]);
+  }), 256 /* UNKEYED_FRAGMENT */))], 2 /* CLASS */)]), _hoisted_8])]);
 }
 
 /***/ }),

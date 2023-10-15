@@ -3,14 +3,20 @@
     <div class="appWrapper">
         <div class="container">
             <div class="search-box">
-                <input class="search-input" type="text" name="q" placeholder="Escribe una palabra">
-                <ul class="result-list show">
-                    <li v-for="x in 10" class="result-item">
+                <input 
+                    class="search-input" 
+                    type="text" 
+                    name="q" 
+                    placeholder="Escribe una palabra"
+                    v-model="query"
+                    @input="search()">
+                <ul 
+                    class="result-list"
+                    :class="resultsVisibility">
+                    <li v-for="post in posts" class="result-item">
                         <a href="#" class="result-link">
-                            <div class="result-title">Nombre del post</div>
-                            <div class="result-contect">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, esse tempore voluptatem hic.
-                            </div>
+                            <div class="result-title">{{ post.title }}</div>
+                            <div class="result-content">{{ post.content.substr(1,40) }}</div>
                         </a>
                     </li>
                 </ul>
@@ -33,7 +39,30 @@
 export default ({
     data(){
         return {
-            text: 'Hola mundo'
+            query: '',
+            posts: ''
+        }
+    },
+
+    computed: {
+        resultsVisibility(){
+            return (this.query.length > 0 ? 'show' : 'hide')
+        }
+    },
+    methods: {
+        search(){
+            if(this.query.length >= 3){
+                axios.post('/posts/search',{
+                    q:this.query
+                }).then(res =>{
+                    console.log(res.data.post);
+                    this.posts = res.data.post;
+                }).catch(error=>{
+    
+                    console.log(error.response)
+                })
+                console.log("Buscando")
+            }
         }
     }
     // setup() {

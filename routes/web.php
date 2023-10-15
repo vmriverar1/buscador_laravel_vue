@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('app');
 });
+
+Route::get('/posts', function(){
+    $posts = \App\Models\Post::all();
+    return response()->json([
+        'posts' =>  $posts
+    ]);
+});
